@@ -14,6 +14,7 @@ Yarışma, 5G şebeke performans metrikleri ve GPS koordinat verilerini kullanar
 - Osman Tekdamar - Üye - [E-posta]
 - Elif Öznur Yeşil - Üye - [E-posta]
 - Abdulkadir Temizoğlu - Üye - [E-posta]
+- Kutay Doğan - Üye dogank20@itu.edu.tr
 
 ## 💻 Kullanılan Teknolojiler
 
