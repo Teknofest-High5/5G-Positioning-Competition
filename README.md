@@ -13,7 +13,7 @@ Yarışma, 5G şebeke performans metrikleri ve GPS koordinat verilerini kullanar
 - Tarık Tuna Taşaltı - Takım Lideri - tekup99@gmail.com
 - Osman Tekdamar - Üye - osmantekdmr@gmail.com
 - Elif Öznur Yeşil - Üye - elifyesil721@gmail.com
-- Abdulkadir Temizoğlu - Üye - [E-posta]
+- Abdulkadir Temizoğlu - Üye - tmzglbdlkdr@gmail.com
 - Kutay Doğan - Üye dogank20@itu.edu.tr
 
 ## 💻 Kullanılan Teknolojiler
