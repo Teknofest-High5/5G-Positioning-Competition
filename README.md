@@ -50,7 +50,7 @@ Yarışma, 5G şebeke performans metrikleri ve GPS koordinat verilerini kullanar
 
 1. Repo'yu klonlayın:
 ```bash
-git clone https://github.com/osman-tkdmr/5G-Positioning-Competition.git
+git clone https://github.com/Teknofest-High5/5G-Positioning-Competition.git
 cd 5G-Positioning-Competition
 ```
 
