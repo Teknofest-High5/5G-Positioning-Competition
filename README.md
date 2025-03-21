@@ -9,12 +9,13 @@ Bu repo, TEKNOFEST 2025 kapsamında Turkcell tarafından düzenlenen "5G Konumla
 Yarışma, 5G şebeke performans metrikleri ve GPS koordinat verilerini kullanarak en hassas konum tespitini yapabilecek modellerin geliştirilmesini amaçlamaktadır. Yarışmacı takımlar, radyo şebeke performans metrikleri ile GPS verilerini içeren şebeke ölçümlerine ait veri setleri üzerinden yapay zekâ, makine öğrenmesi veya farklı tekniklere dayalı konum tahminleme modelleri geliştirerek verilen hedef noktaları bulmaya çalışacaklardır.
 
 ## 👥 Takım Üyeleri
-
-- Tarık Tuna Taşaltı - Takım Lideri - tekup99@gmail.com
-- Osman Tekdamar - Üye - osmantekdmr@gmail.com
-- Elif Öznur Yeşil - Üye - elifyesil721@gmail.com
-- Abdulkadir Temizoğlu - Üye - tmzglbdlkdr@gmail.com
-- Kutay Doğan - Üye dogank20@itu.edu.tr
+|İsim|Rol|Mail|
+|-|:-:|-|
+|Tarık Tuna Taşaltı | Takım Lideri | tekup99@gmail.com|
+|Osman Tekdamar | Üye | osmantekdmr@gmail.com|
+|Elif Öznur Yeşil | Üye | elifyesil721@gmail.com|
+|Abdulkadir Temizoğlu | Üye | tmzglbdlkdr@gmail.com|
+|Kutay Doğan  | Üye | dogank20@itu.edu.tr|
 
 ## 💻 Kullanılan Teknolojiler
 
