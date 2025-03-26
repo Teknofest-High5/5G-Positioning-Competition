@@ -21,7 +21,7 @@
 |NR_UE_MCS_DL_0|Modulation and Coding Scheme (MCS) - Verinin iletilmesi için kullanılan modülasyon ve kodlama şeması (downlink için).|✅||✅|
 |NR_UE_RB_Num_DL_0|Kullanıcının tahsis edilen Resource Block (RB) sayısı (downlink için).|✅||✅|
 |NR_UE_Modulation_Avg_DL_0|Kullanılan ortalama modülasyon türü (örneğin QPSK, 16-QAM, 64-QAM, 256-QAM).|✅||✅|
-|NR_UE_RI_DL_0||✅||✅|
+|NR_UE_RI_DL_0|Rank Indicator (RI) - MIMO sistemlerinde kullanılan akış sayısını gösteren değer.|✅||✅|
 |NR_UE_BLER_DL_0|Block Error Rate (BLER) - Alınan blokların hata oranı (downlink için).|✅||✅|
 |NR_UE_CCE_AggregationLev_0|Control Channel Elements (CCE) Aggregation Level - Kontrol sinyali için kullanılan CCE sayısı.|✅||✅|
 |NR_UE_Power_Tx_PUSCH_0|Power Transmission on Uplink Shared Channel (PUSCH) - Cihazın uplink kanalına gönderdiği güç seviyesi.|✅||✅|
@@ -43,11 +43,11 @@
 |NR_RRC_MsgType|RRC protokolü tarafından kullanılan mesaj türü.|✅||✅|
 |NAS_5GS_MM_MessageType|5G çekirdek ağına yönelik NAS (Non-Access Stratum) Mobility Management mesaj türü.|✅||✅|
 |NAS_5GS_SM_MessageType|5G çekirdek ağına yönelik NAS Session Management mesaj türü.|✅||✅|
-|NR_Scan_NR_ARFCN||✅|||
-|NR_Scan_PCI_SortedBy_RSRP_0-6||✅|||
-|NR_Scan_SSB_RSRP_SortedBy_RSRP_0-6||✅|||
-|NR_Scan_SSB_RSRQ_SortedBy_RSRP_0-6||✅|||
-|NR_Scan_SSB_SINR_SortedBy_RSRP_0-6||✅|||
-|NR_UE_Throughput_RLC_UL||||✅|
-|App_Throughput_UL||||✅|
+|NR_Scan_NR_ARFCN|Ağ tarafından kullanılan NR ARFCN (Absolute Radio Frequency Channel Number) değeri.|✅|||
+|NR_Scan_PCI_SortedBy_RSRP_0-6|RSRP değerine göre sıralanmış en güçlü 6 PCI.|✅|||
+|NR_Scan_SSB_RSRP_SortedBy_RSRP_0-6|RSRP değerine göre sıralanmış en güçlü 6 SSB.|✅|||
+|NR_Scan_SSB_RSRQ_SortedBy_RSRP_0-6|RSRQ değerine göre sıralanmış en güçlü 6 SSB.|✅|||
+|NR_Scan_SSB_SINR_SortedBy_RSRP_0-6|SINR değerine göre sıralanmış en güçlü 6 SSB.|✅|||
+|NR_UE_Throughput_RLC_UL|RLC katmanındaki uplink veri hızı.|||✅|
+|App_Throughput_UL|Kullanıcı cihazında çalışan uygulamanın ölçülen yükleme hızı.|||✅|
 
