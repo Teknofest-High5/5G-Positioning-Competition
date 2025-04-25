@@ -1,0 +1,7 @@
+dl_data = "../Data/5G KONUMLANDIRMA YARISMA VERISI/5G Saha Ölçüm Verileri (GPS mevcut)/5G_DL.xlsx"
+ul_data = "../Data/5G KONUMLANDIRMA YARISMA VERISI/5G Saha Ölçüm Verileri (GPS mevcut)/5G_UL.xlsx"
+Scanner_data = "../Data/5G KONUMLANDIRMA YARISMA VERISI/5G Saha Ölçüm Verileri (GPS mevcut)/5G_Scanner.xlsx"
+bs_data = "../Data/5G KONUMLANDIRMA YARISMA VERISI/5G Baz İstasyonu Konfigürasyon Verileri/İTÜ 5G Hücre Bilgileri.xlsx"
+train_data = "../Data/5G KONUMLANDIRMA YARISMA VERISI/5G Saha Ölçüm Verileri (GPS mevcut)/y_train.csv"
+test_data = "../Data/5G KONUMLANDIRMA YARISMA VERISI/5G Saha Ölçüm Verileri (GPS mevcut)/y_test.csv"
+predict_data = "../Data/5G KONUMLANDIRMA YARISMA VERISI/5G Saha Ölçüm Verileri (GPS mevcut)/predictions.csv"
