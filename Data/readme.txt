@@ -1,0 +1,3 @@
+"TEKNOFEST 5G Konumlandırma Yarışması" kapsamında paylaşılan dijital haritalar, İstanbul Teknik Üniversitesi Uygar Merkezi’nin (gis.itu.edu.tr) katkılarıyla hazırlanmış ve ilgili Turkcell ekiplerinin desteğiyle  son haline getirilmiştir. Değerli katkılarından dolayı İstanbul Teknik Üniversitesi'ne teşekkür ederiz. 
+
+ÖNEMLİ NOT: Yarışma şartnamesinde de vurgulandığı üzere, paylaşılan tüm veriler yalnızca "5G KONUMLANDIRMA YARIŞMASI" takımlarına özel olarak paylaşılmış olup, üçüncü kişilerle paylaşılması kesinlikle yasaktır. 
