@@ -1,2 +1,6 @@
 .venv/
 catboost_info/
+Raw/
+.DS_Store
+.Rhistory
+__pychache__
