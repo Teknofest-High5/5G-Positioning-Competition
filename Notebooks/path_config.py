@@ -20,7 +20,6 @@ class PathConfig:
         self._processed_saha_olcum_dir = self._data_dir / self._processed_dir / "5G Saha Ölçüm Verileri (GPS mevcut)"
         self._processed_harita_dir = self._data_dir / self._processed_dir / "İTÜ Kampüs Harita Verileri"
         self._processed_other_dir = self._data_dir / self._processed_dir / "Other"
-        ##########3
 
         self.Hucre_Bilgileri = self._raw_konfigurasyon_dir / "İTÜ 5G Hücre Bilgileri.xlsx"
 
@@ -31,8 +30,10 @@ class PathConfig:
 
         self.build_path = self._raw_harita_dir / "ITU_3DBINA_EPSG4326.shp"
         self.vege_path = self._raw_harita_dir / "ITU_3DVEGETATION_EPSG4326.shp"
-        self.wathers_path = self._raw_harita_dir / "ITU_SUKUTLESI_EPSG4326.shp"
+        self.waters_path = self._raw_harita_dir / "ITU_SUKUTLESI_EPSG4326.shp"
+        self.border_path = self._raw_harita_dir / "ITU_SINIRDUVAR_EPSG4326.shp"
         self.roads_path = self._raw_harita_dir / "ITU_ULASIMAGI_EPSG4326.shp"
+
         # sadece şu ana kadar kullandığımız harita dosylarını koydum,
         # diğer harita dosyaları için de aynı şekilde path tanımlayabilirsin.
 
