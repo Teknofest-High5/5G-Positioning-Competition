@@ -16,9 +16,9 @@ class PathConfig:
         self._raw_saha_olcum_dir = self._data_dir / self._raw_dir / "5G Saha Ölçüm Verileri (GPS mevcut)"
         self._raw_harita_dir = self._data_dir / self._raw_dir / "İTÜ Kampüs Harita Verileri"
 
-        self._processed_konfigurasyon_dir = self._data_dir / self._processed_dir / "5G Baz İstasyonu Konfigürasyon Verileri"
-        self._processed_saha_olcum_dir = self._data_dir / self._processed_dir / "5G Saha Ölçüm Verileri (GPS mevcut)"
-        self._processed_harita_dir = self._data_dir / self._processed_dir / "İTÜ Kampüs Harita Verileri"
+        self._processed_konfigurasyon_dir = self._data_dir / self._processed_dir / "Base_Stations_Data"
+        self._processed_saha_olcum_dir = self._data_dir / self._processed_dir / "DL_UL_Scanner"
+        self._processed_harita_dir = self._data_dir / self._processed_dir / "Map_Data"
         self._processed_other_dir = self._data_dir / self._processed_dir / "Other"
 
         self.Hucre_Bilgileri = self._raw_konfigurasyon_dir / "İTÜ 5G Hücre Bilgileri.xlsx"
