@@ -15,6 +15,7 @@ class PathConfig:
         self._raw_konfigurasyon_dir = self._data_dir / self._raw_dir / "5G Baz İstasyonu Konfigürasyon Verileri"
         self._raw_saha_olcum_dir = self._data_dir / self._raw_dir / "5G Saha Ölçüm Verileri (GPS mevcut)"
         self._raw_harita_dir = self._data_dir / self._raw_dir / "İTÜ Kampüs Harita Verileri"
+        self.test_data_dir = self._raw_dir / "Test Verisi"
 
         self._processed_konfigurasyon_dir = self._data_dir / self._processed_dir / "Base_Stations_Data"
         self._processed_saha_olcum_dir = self._data_dir / self._processed_dir / "DL_UL_Scanner"
@@ -27,6 +28,9 @@ class PathConfig:
         self.ul_path = self._raw_saha_olcum_dir / "5G_UL.xlsx"
         self.scanner_path = self._raw_saha_olcum_dir / "5G_Scanner.xlsx"
 
+        self.test_dl_path = self.test_data_dir / "5G_DL.xlsx"
+        self.test_ul_path = self.test_data_dir / "5G_UL.xlsx"
+        self.test_scanner_path = self.test_data_dir / "5G_Scanner.xlsx"
 
         self.build_path = self._raw_harita_dir / "ITU_3DBINA_EPSG4326.shp"
         self.vege_path = self._raw_harita_dir / "ITU_3DVEGETATION_EPSG4326.shp"
