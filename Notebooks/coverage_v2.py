@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import polars as pl
 import matplotlib.pyplot as plt
 import geopandas as gpd
 from path_config import PathConfig
@@ -214,7 +215,7 @@ def create_calculate_grid_rsrp(
             sidelobe_suppression_db = 12
 
         grid_data_calculations = calculate_rsrp_and_heatmap(
-            grid_data=grid_data,
+            grid_data=grid_data.loc[:, ["Longitude", "Latitude"]],
             bs_longitude=row["Longitude"],
             bs_latitude=row["Latitude"],
             bs_height=row["Height"],
@@ -228,12 +229,15 @@ def create_calculate_grid_rsrp(
 
         grid_data_calculations = grid_data_calculations.add_suffix(f"_PCI_{row['PCI']}")
 
+        coordinate_cols = [f"Longitude_PCI_{row['PCI']}", f"Latitude_PCI_{row['PCI']}"]
+
         grid_data = grid_data.merge(
             grid_data_calculations,
             left_on=["Longitude", "Latitude"],
-            right_on=[f"Longitude_PCI_{row['PCI']}", f"Latitude_PCI_{row['PCI']}"],
+            right_on=coordinate_cols,
             how="left",
         )
+        grid_data = grid_data.drop(columns=coordinate_cols)
 
     if create_file:
         grid_data.to_parquet(
@@ -243,14 +247,90 @@ def create_calculate_grid_rsrp(
     return grid_data
 
 
+def create_measured_signal_coverage(
+    data: pl.DataFrame,
+    bs_data: pl.DataFrame,
+    group_by_columns: list = None,
+    fill_nan: float = -500.0,
+    create_file: bool = False,
+    path: PathConfig = paths._processed_measured_coverage_dir,
+):
+    pci_cols = [col for col in data.columns if "PCI" in col]
+    rsrp_cols = [col for col in data.columns if "RSRP" in col]
+    select_cols = pci_cols + rsrp_cols + ["Longitude", "Latitude"]
+    data = data.select(select_cols)
+    if not group_by_columns:
+        data = (
+            data.select(select_cols)
+            .group_by(group_by_columns)
+            .agg(
+                pl.col(rsrp_cols).mean(),
+                pl.col(pci_cols).filter(pl.col(pci_cols).is_not_null()).mode().last(),
+            )
+        )
+    column_names = ["Latitude", "Longitude"] + [str(pci) for pci in bs_data["PCI"]]
+
+    all_pcis = set()
+    for row in data.iter_rows(named=True):
+        for pci_col in pci_cols:
+            pci = row[pci_col]
+            if pci is not None:
+                all_pcis.add(str(pci))
+
+    # print(f"ALL PCIS: {sorted(all_pcis)}")
+
+    schema = {"Longitude": pl.Float64, "Latitude": pl.Float64}
+
+    for pci in all_pcis:
+        schema[pci] = pl.Float64
+
+    signal_dict_list = []
+
+    for row in data.iter_rows(named=True):
+        temp_dict = {"Longitude": row["Longitude"], "Latitude": row["Latitude"]}
+
+        for pci in all_pcis:
+            temp_dict[pci] = np.nan
+
+        for pci_col, rsrp_col in zip(pci_cols, rsrp_cols):
+            pci = row[pci_col]
+            if pci is not None:
+                rsrp_value = row[rsrp_col]
+                if rsrp_value is not None:
+                    temp_dict[str(pci)] = float(rsrp_value)
+
+        signal_dict_list.append(temp_dict)
+
+    signal_data = pl.DataFrame(signal_dict_list, schema=schema)
+
+    signal_data = signal_data.select(column_names).with_columns(
+        pl.all().cast(pl.Float64, strict=False)
+    )
+    # print(f"DataFrame shape: {signal_data.shape}")
+    # print(f"Columns: {signal_data.columns}")
+    signal_data = signal_data.fill_nan(fill_nan)
+
+    if create_file:
+        signal_data.write_parquet(path / "measured_signal_coverage.parquet")
+
+    return signal_data
+
+
 if __name__ == "__main__":
     border = gpd.read_file(paths.border_path)
-    kabinets = pd.read_csv((paths.kabinets_path))
+    kabinets = pd.read_csv(paths.kabinets_path)
+    dl_data = pl.read_parquet(
+        paths._processed_saha_olcum_dir / "merged_data_dl.parquet"
+    )
 
     grid_data = create_calculate_grid_rsrp(
         bs_data=kabinets,
         border_data=border,
         path_loss_strategy="ALL",
-        grid_spacing=10,
+        grid_spacing=1,
         create_file=True,
+    )
+
+    create_measured_signal_coverage(
+        dl_data, kabinets, group_by_columns=["Time"], create_file=True
     )

@@ -20,9 +20,13 @@ class PathConfig:
         self._processed_konfigurasyon_dir = self._data_dir / self._processed_dir / "Base_Stations_Data"
         self._processed_saha_olcum_dir = self._data_dir / self._processed_dir / "DL_UL_Scanner"
         self._processed_harita_dir = self._data_dir / self._processed_dir / "Map_Data"
+        self._processed_measured_coverage_dir = self._processed_harita_dir / "Measured Coverage"
+        self._processed_coverage_dir = self._processed_harita_dir / "Calculated Coverage"
         self._processed_other_dir = self._data_dir / self._processed_dir / "Other"
 
         self.Hucre_Bilgileri = self._raw_konfigurasyon_dir / "İTÜ 5G Hücre Bilgileri.xlsx"
+
+        self.kabinets_path = self._processed_saha_olcum_dir / "Kabinets.csv"
 
         self.dl_path = self._raw_saha_olcum_dir / "5G_DL.xlsx"
         self.ul_path = self._raw_saha_olcum_dir / "5G_UL.xlsx"
