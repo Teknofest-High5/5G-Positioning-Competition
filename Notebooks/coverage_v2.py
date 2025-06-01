@@ -250,7 +250,8 @@ def create_calculate_grid_rsrp(
 def create_measured_signal_coverage(
     data: pl.DataFrame,
     bs_data: pl.DataFrame,
-    group_by_columns: list = None,
+    group_by_loc: bool = True,
+    group_by_time: bool = False,
     fill_nan: float = -500.0,
     create_file: bool = False,
     path: PathConfig = paths._processed_measured_coverage_dir,
@@ -258,11 +259,23 @@ def create_measured_signal_coverage(
     pci_cols = [col for col in data.columns if "PCI" in col]
     rsrp_cols = [col for col in data.columns if "RSRP" in col]
     select_cols = pci_cols + rsrp_cols + ["Longitude", "Latitude"]
-    data = data.select(select_cols)
-    if not group_by_columns:
+
+    if group_by_time:
+        select_cols.append("Time")
         data = (
             data.select(select_cols)
-            .group_by(group_by_columns)
+            .group_by("Time")
+            .agg(
+                pl.col(rsrp_cols).mean(),
+                pl.col(pci_cols).filter(pl.col(pci_cols).is_not_null()).mode().last(),
+                pl.col(["Longitude", "Latitude"]).filter(pl.col(["Longitude", "Latitude"]).is_not_null()).mode().last()
+            )
+        )
+
+    if group_by_loc:
+        data = (
+            data.select(select_cols)
+            .group_by(["Longitude", "Latitude"])
             .agg(
                 pl.col(rsrp_cols).mean(),
                 pl.col(pci_cols).filter(pl.col(pci_cols).is_not_null()).mode().last(),
@@ -322,7 +335,7 @@ if __name__ == "__main__":
     dl_data = pl.read_parquet(
         paths._processed_saha_olcum_dir / "merged_data_dl.parquet"
     )
-
+    """
     grid_data = create_calculate_grid_rsrp(
         bs_data=kabinets,
         border_data=border,
@@ -330,7 +343,8 @@ if __name__ == "__main__":
         grid_spacing=1,
         create_file=True,
     )
-
+    """
+    
     create_measured_signal_coverage(
-        dl_data, kabinets, group_by_columns=["Time"], create_file=True
+        dl_data, kabinets, group_by_loc=True, group_by_time=False, create_file=True
     )
