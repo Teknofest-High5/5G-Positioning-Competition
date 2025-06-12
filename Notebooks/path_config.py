@@ -11,6 +11,7 @@ class PathConfig:
         self._data_dir = self._base_dir / "Data"
         self._raw_dir = self._data_dir / "Raw"
         self._processed_dir = self._data_dir / "Processed"
+        self.results_dir = self._data_dir / "Results"
 
         self._raw_konfigurasyon_dir = self._data_dir / self._raw_dir / "5G Baz İstasyonu Konfigürasyon Verileri"
         self._raw_saha_olcum_dir = self._data_dir / self._raw_dir / "5G Saha Ölçüm Verileri (GPS mevcut)"
