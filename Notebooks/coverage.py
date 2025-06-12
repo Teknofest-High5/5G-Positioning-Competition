@@ -118,9 +118,9 @@ def calculate_coverage(
         "Downtilt (°)"   : downtilt_fixed_deg,
         "el_to_rx (°)"   : round(el_to_rx, 2),
         "Ant Gain (dBi)" : round(tx_gain_db, 2),
-        "Path Loss (dB)" : round(path_loss_db, 2),
-        "RSRP (dBm)"     : round(rx_power_dbm, 2),
-        "Timing Adv"     : timing_advance
+        "NR_UE_Pathloss_DL_0" : round(path_loss_db, 2),
+        "NR_UE_RSRP_0"     : round(rx_power_dbm, 2),
+        "NR_UE_Timing_Advance"     : timing_advance
     }])
 
     #print(out.to_string(index=False))
