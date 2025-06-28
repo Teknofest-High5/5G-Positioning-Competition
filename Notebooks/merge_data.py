@@ -1,46 +1,48 @@
+# Merging new dataset provided by teknofest
 import polars as pl
-import numpy as np
-from path_config import PathConfig
 
-paths = PathConfig()
+dl_data = pl.read_excel("data/5g-field-data/5G_DL.xlsx", sheet_name="Series Formatted Data")
+dl_test_data = pl.read_excel("data/5g-field-data/test-data/5G_DL.xlsx", sheet_name="Series Formatted Data")
 
+dl_test_data = dl_test_data.with_columns((pl.col("Message")+ dl_data["Message"][-1] + 1))
 
-def merge_datasets(
-    data: pl.DataFrame,
-    test_data: pl.DataFrame,
-    drop_cols: list = ["Distance", "GPS_Confidence", "Message", "Technology_Mode"],
-    create_file: bool = False,
-    path: PathConfig = paths._processed_saha_olcum_dir,
-    file_suffix: str = None,
-):
-    common_cols = set(data.columns) & set(test_data.columns)
-    cast_exprs = [pl.col(col).cast(pl.String, strict=False) for col in common_cols]
-    data = data.with_columns(cast_exprs)
-    test_data = test_data.with_columns(cast_exprs)
+for col in dl_data.columns:
+    if col not in dl_test_data.columns:
+        dl_data = dl_data.drop(col)
 
-    merged_data = pl.concat([data, test_data], how="diagonal").drop(drop_cols)
-    merged_data = merged_data.drop_nulls(subset=["Latitude", "Longitude"])
+for col in dl_test_data.columns:
+    if col not in dl_data.columns:
+        dl_test_data = dl_test_data.drop(col)
 
-    pci_cols = [col for col in merged_data.columns if "PCI" in col]
-    rsrp_cols = [col for col in merged_data.columns if "RSRP" in col]
+cat_cols = [
+    "NR_UE_PCI_0",
+    "NR_UE_Nbr_PCI_0",
+    "NR_UE_Nbr_PCI_1",
+    "NR_UE_Nbr_PCI_2",
+    "NR_UE_Nbr_PCI_3",
+    "NR_UE_RI_DL_0",
+    "NR_UE_Modulation_Avg_DL_0",
+    "NR_UE_MCS_DL_0",
+    "NR_UE_CCE_AggregationLev_0",
+    "NR_RRC_MsgType",
+    "NR_UE_RRCReEst_EndResult",
+    "NAS_5GS_MM_MessageType"
+]
 
-    merged_data = merged_data.with_columns(
-        [pl.col(col).cast(pl.Int64, strict=False) for col in pci_cols]
-        + [pl.col(col).cast(pl.Float64, strict=False) for col in rsrp_cols]
-    )
+merged_data = pl.concat([dl_data,dl_test_data],how='vertical_relaxed')
 
-    if create_file:
-        merged_data.write_parquet(path / f"merged_data_{file_suffix}.parquet")
+merged_data = merged_data.drop("Technology_Mode")
 
-    return merged_data
+for col in merged_data.columns:
+    if col == "Time":
+        continue
+    elif "_PCI_" in col:
+        merged_data = merged_data.with_columns(
+            pl.col(col).cast(pl.Float64, strict=True)
+        )
+    elif (merged_data[col].dtype == pl.String) and col not in cat_cols:
+        merged_data = merged_data.with_columns(
+            pl.col(col).cast(pl.Float64, strict=True)
+        )
 
-
-if __name__ == "__main__":
-    dl_data = pl.read_excel(paths.dl_path, sheet_name="Series Formatted Data")
-    dl_test_data = pl.read_excel(paths.test_dl_path, sheet_name="Series Formatted Data")
-
-    ul_data = pl.read_excel(paths.ul_path, sheet_name="Series Formatted Data")
-    ul_test_data = pl.read_excel(paths.test_ul_path, sheet_name="Series Formatted Data")
-
-    merge_datasets(dl_data, dl_test_data, create_file=True, file_suffix="dl")
-    merge_datasets(ul_data, ul_test_data, create_file=True, file_suffix="ul")
+merged_data.write_parquet("data/parquet/dl.parquet")
