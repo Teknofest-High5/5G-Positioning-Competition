@@ -4,4 +4,4 @@ Raw/
 .DS_Store
 .Rhistory
 __pychache__/
-*.pyc
+*.pycData/tools.csv

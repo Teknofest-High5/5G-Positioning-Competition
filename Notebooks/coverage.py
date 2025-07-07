@@ -36,7 +36,7 @@ def calculate_coverage(
     # ► 2-c) Maksimum (boresight) anten kazancı
     max_ant_gain_db = g_element_db + g_bf_db
 
-    #https://www.nature.com/articles/s41598-025-93251-7?utm_source=chatgpt.com
+    #https://www.nature.com/articles/s41598-025-93251-7
     #https://www.qsl.net/n1bwt/app-6a.pdf
     # -------------------------------------------------------------
     # 3) JEODEZİK MESAFE VE AÇI HESAPLAMALARI
