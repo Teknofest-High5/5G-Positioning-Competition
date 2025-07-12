@@ -1,0 +1,14 @@
+1-) NA’lerin group by gibi algoritmalarla doldurulması
+2-) Timestamplerin eşit frekanslı ve satır bazlı farklı ele alınması
+3-) Downlink uplink scanner birleştirilmesi (satır sayısının eşitlenerek birleşmesi)
+4-) Her pci’nın nalerinin en yakındakine göre doldurması.
+5-) Her pci’nın (toplamda 6 adet) x,y,z değerlerinin input verilmesi, her birine olan uzaklığın input verilmesi
+6-) Handover flag’ı eklenecek (bu zaten var mı bilmiyorum.)
+7-) Velocity kolonu eklenecek.
+8-) Veri zamana göre 10 eşit parçaya bölünecek.
+9-) Window slide için size ve ne kadar gecikmeli başlayacağı hiperparametre olarak verilerek bunun 10 veri setine uygulanması. (Bütün kolonlar için)
+10-) Her bir veri setinin %80-20 train test bölünmesi
+11-) Train için windowslide gerçek veri ile devam ederken testte forecastler üzerinden devam edecek şekilde inputların hazırlanması.
+12-) LSTM, RNN, SARIMAX denenmesi.
+
+Her birisi py dosyası şeklinde olmalı. Dinamik olmalı, hipeürparametreler ve dataframe input almalı.
