@@ -1,5 +1,8 @@
 # 🌐 TEKNOFEST 2025 - 5G Konumlandırma Yarışması
 
+**In short (English).** Team High5's entry to the TEKNOFEST 2025 5G Positioning Competition run by Turkcell: predicting a device's outdoor position from live 5G radio measurements (RSRP, RSRQ, SINR and neighbour-cell metrics) on the ITU Ayazağa campus test network. The pipeline cleans and aligns the drive-test logs, engineers per-cell and neighbour-cell features, and fits multi-output regression models from radio metrics to coordinates, tuned with Optuna; the best model was XGBoost with a mean positioning error of 2.7 m. Team lead: Tarık Tuna Taşaltı. Notebooks and experiment scripts are under `Notebooks/`, design reports under `Reports/`. The rest of this README is in Turkish.
+
+
 ## 📡 Proje Hakkında
 
 Bu repo, TEKNOFEST 2025 kapsamında Turkcell tarafından düzenlenen "5G Konumlandırma Yarışması" için geliştirilen konumlandırma algoritması ve ilgili çalışmaları içermektedir. Projemiz, İstanbul Teknik Üniversitesi Ayazağa Yerleşkesindeki mevcut 5G şebekesi kullanılarak en doğru konumlamayı yapan modeli geliştirmeyi hedeflemektedir.
