@@ -14,7 +14,7 @@ Yarışma, 5G şebeke performans metrikleri ve GPS koordinat verilerini kullanar
 ## 👥 Takım Üyeleri
 |İsim|Rol|Mail|
 |-|:-:|-|
-|Tarık Tuna Taşaltı | Takım Lideri | tekup99@gmail.com|
+|Tarık Tuna Taşaltı | Takım Lideri | [@ttasalti](https://github.com/ttasalti)|
 |Osman Tekdamar | Üye | osmantekdmr@gmail.com|
 |Elif Öznur Yeşil | Üye | elifyesil721@gmail.com|
 |Abdulkadir Temizoğlu | Üye | tmzglbdlkdr@gmail.com|
